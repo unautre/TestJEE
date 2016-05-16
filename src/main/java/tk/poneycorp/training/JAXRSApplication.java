@@ -14,13 +14,14 @@ import javax.ws.rs.core.Application;
 @ApplicationPath("api")
 public class JAXRSApplication extends ResourceConfig {
     public JAXRSApplication() {
-        register(new AbstractBinder() {
+        /*register(new AbstractBinder() {
             @Override
             protected void configure() {
-                bind(MessagesEJB.class).to(MessagesEJB.class);
+                //bind(MessagesEJB.class).to(MessagesEJB.class);
                 //bind(AJAXResource.class).to(AJAXResource.class);
             }
-        });
+        }); */
+        register(ExceptionListener.class);
         packages(true, "tk.poneycorp.training");
     }
 }

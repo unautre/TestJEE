@@ -13,7 +13,7 @@ public class MessageBean {
 
     private String content;
 
-    @ManyToOne // @XmlIDREF
+    @ManyToOne
     private AuthorBean author;
 
     public MessageBean() {
@@ -38,6 +38,7 @@ public class MessageBean {
         this.content = content;
     }
 
+    @XmlIDREF
     public AuthorBean getAuthor() {
         return author;
     }

@@ -32,4 +32,9 @@ public class MessagesEJB implements Serializable {
         em.persist(messageBean);
         return messageBean;
     }
+
+    public List<MessageBean> getAllSince(long from_id) {
+        TypedQuery<MessageBean> query = em.createQuery("Select m from MessageBean m where m.id > :from_id", MessageBean.class);
+        return query.setParameter("from_id", from_id).getResultList();
+    }
 }

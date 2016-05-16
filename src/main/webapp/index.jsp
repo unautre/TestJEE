@@ -34,9 +34,20 @@
     }
     function refreshMessages() {
       xhr = new XMLHttpRequest();
-      xhr.open("GET", "api", false);
+      if(typeof from_id == "undefined"){
+        xhr.open("GET", "api/getall", false);
+      }else{
+        xhr.open("GET", "api/getsince/" + from_id, false);
+      }
       xhr.send(null);
-      data = xhr.responseXML;
+      msgs = xhr.responseXML.querySelectorAll("message")
+      for(i = 0;i<msgs.length;i++){
+        addRow(
+                msgs[i].querySelector("author").textContent,
+                msgs[i].querySelector("content").textContent
+        );
+        from_id = msgs[i].querySelector("id").textContent;
+      }
     }
   </script>
   <input type="button" value="Refresh..." onclick="refreshMessages();" />

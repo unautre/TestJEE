@@ -1,22 +1,18 @@
 package tk.poneycorp.training.data;
 
 import javax.persistence.*;
-import javax.xml.bind.annotation.XmlAttribute;
-import javax.xml.bind.annotation.XmlID;
-import javax.xml.bind.annotation.XmlRootElement;
-import javax.xml.bind.annotation.XmlTransient;
+import javax.xml.bind.annotation.*;
 import java.util.ArrayList;
 import java.util.List;
 
 /**
  * Created by unautre on 24/04/16.
  */
-@Entity @XmlRootElement //(name = "author")
+@Entity @XmlRootElement(name = "author")
 public class AuthorBean {
-    @Id //@XmlAttribute
+    @Id //@XmlID
     private String nickname;
 
-    //@XmlTransient
     private String password;
 
     @OneToMany(mappedBy = "author")
@@ -28,6 +24,7 @@ public class AuthorBean {
         this.password = password;
     }
 
+    @XmlID @XmlAttribute
     public String getNickname() {
         return nickname;
     }
@@ -35,6 +32,7 @@ public class AuthorBean {
         this.nickname = id;
     }
 
+    @XmlTransient
     public String getPassword() {
         return password;
     }
