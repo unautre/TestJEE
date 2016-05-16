@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<persistence xmlns="http://java.sun.com/xml/ns/persistence" version="2.0">
+    <persistence-unit name="jpa_training" transaction-type="JTA">
+        <provider>org.eclipse.persistence.jpa.PersistenceProvider</provider>
+        <class>tk.poneycorp.training.data.MessageBean</class>
+        <class>tk.poneycorp.training.data.AuthorBean</class>
+        <properties>
+            <!-- for table generation -->
+            <property name="eclipselink.ddl-generation.output-mode" value="both" />
+            <property name="eclipselink.ddl-generation" value="drop-and-create-tables" />
+        </properties>
+    </persistence-unit>
+</persistence>
